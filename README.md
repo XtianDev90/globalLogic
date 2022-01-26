@@ -67,6 +67,11 @@ _Resultado_
 {"id":"943b15e6-a4d8-4afa-baba-a973031bb0e5","name":"ADMIN","email":"PRUEBA@DOMINIO.CL","password":"a2asfGfdfdf4","phones":[{"idPhone":33,"number":974524787,"citycode":11,"contrycode":"13"}],"created":"2022-01-25T20:47:46.05","lastLogin":"2022-01-25T20:47:46.05","token":"Falta implementar generador de token JWT","active":false}
 ```
 
-## Ejecutando las pruebas 
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+## Pendientes
+```
+- Diagrama de componentes
+- Pruebas unitarias
+- Expresion regular para la password
+- Creacion de token con JWT
+- Pruebas unitarias
+```
