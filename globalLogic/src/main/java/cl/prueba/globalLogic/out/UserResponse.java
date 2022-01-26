@@ -1,6 +1,5 @@
 package cl.prueba.globalLogic.out;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +22,8 @@ public class UserResponse {
     private String email;
     private String password;
     private List<Phone> phones = new ArrayList<>();
-	private LocalDateTime created;
-	private LocalDateTime lastLogin;
+	private String created;
+	private String lastLogin;
 	private String token;
 	private boolean isActive;
 }
