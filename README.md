@@ -1,6 +1,6 @@
 # GlobalLogic Ejercicio JAVA
 
-_Ejercicio BCI para registrar un usuario, obtener un id de tipo UUDI y obtener un usuario por su codigo UUDI.
+_Ejercicio BCI para registrar un usuario, obtener un id de tipo UUDI y obtener un usuario por su codigo UUDI_
 
 ## Comenzando 
 
@@ -57,7 +57,7 @@ _Resultado_
 {"id":"943b15e6-a4d8-4afa-baba-a973031bb0e5","name":"ADMIN","email":"PRUEBA@DOMINIO.CL","password":"a2asfGfdfdf4","phones":[{"idPhone":33,"number":974524787,"citycode":11,"contrycode":"13"}],"created":"2022-01-25T20:47:46.05","lastLogin":"2022-01-25T20:47:46.05","token":"Falta implementar generador de token JWT","active":false}
 ```
 
-_Despues de crear el registro se puede consultar con el UUDI que retorno "id":"943b15e6-a4d8-4afa-baba-a973031bb0e5" _
+_Despues de crear el registro se puede consultar con el UUDI que retorno "id":"943b15e6-a4d8-4afa-baba-a973031bb0e5"_
 ```
 curl -X GET -H "Content-Type:application/json"  "http://localhost:8080/api/v1/login/943b15e6-a4d8-4afa-baba-a973031bb0e5"
 ```
