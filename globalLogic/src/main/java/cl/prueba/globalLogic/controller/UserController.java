@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,31 +13,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cl.prueba.globalLogic.dto.UserDTO;
 import cl.prueba.globalLogic.entity.User;
-import cl.prueba.globalLogic.in.UserRequest;
-import cl.prueba.globalLogic.out.UserResponse;
-import cl.prueba.globalLogic.servicio.IUserServices;
+import cl.prueba.globalLogic.service.IUserServices;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@EnableAutoConfiguration
+@RequiredArgsConstructor
 @RequestMapping("api/v1")
 public class UserController {
-	
-	@Autowired
-	protected IUserServices userService;
-	
-	@RequestMapping("hello")
-	public String helloWorld() {
-		return "Hello !!";
-	}
+
+	protected final IUserServices userService;
 	
 	@PostMapping("/sign-up")
-	public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRequest userReq){
-		return ResponseEntity.ok().body(this.userService.createUser(userReq));
+	public ResponseEntity<UserDTO> createUser(@Valid @RequestBody User user){
+		return ResponseEntity.ok().body(this.userService.createUser(user));
 	}
 	
 	@GetMapping("/login/{id}")
-	public ResponseEntity<UserResponse> getUserById(@PathVariable String id){
+	public ResponseEntity<UserDTO> getUserById(@PathVariable String id){
 		return ResponseEntity.ok().body(this.userService.getUserById(id));
 	}
 	

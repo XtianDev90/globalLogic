@@ -22,7 +22,7 @@ public class Constantes {
 		/** Expresion regular para validar el correo electronico **/
 		public static final String EMAIL_PATTERN = "/[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,4}/";
 		/** Expresion regular para validar la password **/
-		public static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,12}$";
+		public static final String PASSWORD_PATTERN = "^(?=.{2,}[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,12}$";
 		
 	}
 	

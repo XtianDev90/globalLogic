@@ -2,8 +2,7 @@ package cl.prueba.globalLogic.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.CascadeType;
@@ -12,28 +11,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import lombok.Data;
+import cl.prueba.globalLogic.util.Constantes;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "USERS")
+@AllArgsConstructor
 public class User implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2731008251055983641L;
 
 	@Id
 	@GeneratedValue(generator = "UUID")
@@ -43,35 +48,34 @@ public class User implements Serializable {
 	)
 	@ColumnDefault("random_uuid()")
 	@Type(type = "uuid-char")
-	@Getter
-	@Setter
+	@Column(name = "id_user")
 	private UUID idUser;
 	
-	@Column(name="Name" , nullable = false)
-    @NotNull(message = "Debes especificar el nombre del usuario.")
+	@NotEmpty(message = "Debes especificar el nombre del usuario.")
     private String name;
 	
-	@Column(name="Email" , nullable = false)
-    @NotNull(message = "Debes especificar el email del usuario.")
+	@NotEmpty(message = "Debes especificar el email del usuario.")
+	@Email
+    @Column(unique = true)
     private String email;
 	
-	@Column(name="Password" , nullable = false)
-    @NotNull(message = "Debes especificar la password del usuario.")
+	@NotEmpty(message = "Debes especificar la password del usuario.")
+    @Pattern(regexp = Constantes.Pattern.PASSWORD_PATTERN)
     private String password;
 	
-	@Column(name="Created" , nullable = false)
 	private LocalDateTime created;
 	
-	@Column(name="LastLogin" , nullable = false)
 	private LocalDateTime lastLogin;
 	
-	@Column(name="Token" , nullable = false)
 	private String token;
 	
-	@Column(name="IsActive" , nullable = false)
 	private boolean isActive;
 
+	@PrePersist
+    private void prePersist(){
+        this.created = LocalDateTime.now();
+    }
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Phone> phones = new ArrayList<>();
+    private Set<Phone> phones;
 
 }

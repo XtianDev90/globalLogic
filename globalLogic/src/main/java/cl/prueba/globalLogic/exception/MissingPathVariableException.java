@@ -1,6 +1,8 @@
 package cl.prueba.globalLogic.exception;
 
-public class MissingPathVariableException extends RuntimeException{
+import java.io.Serializable;
+
+public class MissingPathVariableException extends RuntimeException implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

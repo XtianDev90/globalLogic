@@ -6,30 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "hello",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/v1/hello",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"hello"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "sign-up",
 			"protocolProfileBehavior": {
 				"strictSSL": false
@@ -69,7 +45,14 @@
 			},
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQcnVlYmFARG9taW5pby5jbCIsImV4cCI6MTY0NDI3NDUzNX0.KKH6IMbLBZE8XDJqKNGfhCCGukNEZcTD_ye-pBhrnzw",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
@@ -83,7 +66,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/login/10a9f96b-2f68-4e7e-9463-93da18ef0cc2",
+					"raw": "http://localhost:8080/api/v1/login/70ba4c44-d409-4eb3-b827-2356d87806d2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -93,40 +76,7 @@
 						"api",
 						"v1",
 						"login",
-						"10a9f96b-2f68-4e7e-9463-93da18ef0cc2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "users",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/v1/users",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"users"
+						"70ba4c44-d409-4eb3-b827-2356d87806d2"
 					]
 				}
 			},
